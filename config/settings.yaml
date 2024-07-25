@@ -1,0 +1,17 @@
+development:
+  postgres:
+    host: "127.0.0.1"
+    scheme: "postgresql+asyncpg"
+  redis:
+    host: "127.0.0.1"
+    scheme: "redis"
+
+release:
+  web:
+    host: "0.0.0.0"
+  postgres:
+    host: "postgresql_server"
+    scheme: "postgresql+asyncpg"
+  redis:
+    host: "redis_server"
+    scheme: "redis"

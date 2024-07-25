@@ -1,0 +1,42 @@
+version: "3"
+services:
+    postgresql:
+        image: "postgres:12.18"
+        container_name: postgres-UniQay
+        restart: unless-stopped
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=postgres1
+            - POSTGRES_PASSWORD=qwe123rty456wer
+            - POSTGRES_DB=uniqay
+        ports:
+            - "5432:5432"
+    
+    # nats_server: # Добавляем NATS сервер как новую службу.
+    #     image: "nats:2.9.19-alpine"
+    #     command: "-js"
+    #     ports:
+    #         - "4222:4222"  # открываем порт для внешних соединений
+    #         - "6222:6222"
+    #         - "8222:8222"  # Для HTTP мониторинга
+        
+    #     # volumes:
+    #     #     - "nats_data:/app/data"  # Папка для хранения данных (в моем случае в папку проекта в папке data)
+    #     # - "nats_logs:/app/logs"  # Папка для логов (не обязательна)
+    #     restart: unless-stopped
+    #     container_name: nats_server_js
+
+    redis:
+        image: "redis:5.0.7"
+        container_name: redis-UniQay
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+
+    # nats_worker:
+    #     build: 
+
+volumes:
+    postgres_data: null
+
